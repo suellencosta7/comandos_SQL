@@ -27,4 +27,13 @@ create table membros(
 );
 
 insert into membros values            -- Inserindo mais de um dado de uma vez na tabela membros.
-(default,'Maria','F'),(default,'Jõao','M'),(default,'Nina','F'),(default,'Jorge','M');
+(default,'Maria','F'),(default,'Jõao','M'),(default,'Nina','F'),(default,'Jorge','M'); 
+
+
+			-- Criando relação entre elas através da Foreign Key (Chave estrangeira)
+
+use casa;  			    						 -- Abrir o Banco de dados 
+alter table membros add column pertence int;					 -- A tabela dominante recebe uma coluna que será o campo para F.Key
+alter table membros add foreign key (pertence) references comodos(id);		 -- Chave inserida
+update membros  set pertence = '1' where id = '1';				 
+select nome,pertence from membros;						 -- Veja como ficou
